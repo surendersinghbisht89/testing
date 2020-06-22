@@ -1,0 +1,42 @@
+#!/bin/bash
+clear
+#`rm -rf file_name_ip`
+echo ""
+#PATH="/home/jai/script/copy/host"
+echo "Provide the sequence of file number example:-(gms01...gms02):-"
+echo ""
+read -p "Provide the first sequence of startng number :-" num1
+read -p "Provide the last  sequence of starting number :-" num2
+echo ""
+read -p "Provide the file name which you want to copy example ( gms01.cfg ):-" f                                                                                                             ile1
+echo ""
+if [ -f `pwd`/$file1 ]; then
+echo "'$file1' file exists at this location `pwd`"
+echo ""
+NAME=`echo $file1 | awk -F"." '{print $1}' | tr -dc 'a-z'`
+for i  in $(seq -f "%02g" ${num1} ${num2})
+do
+`cp $file1 $NAME$i.cfg`
+echo $NAME$i.cfg
+FILE="/etc/hosts"
+IP=`cat $FILE | grep -w $NAME$i | awk '{print $1}'`
+echo $NAME$i.cfg >> file_name_ip $IP
+done
+echo ""
+echo "Copy has been done..."
+echo ""
+else
+echo ""
+echo "'$file1' file doesn't exists at this location"
+echo ""
+fi
+while read host ip
+do
+HOST=`echo $host | awk -F "." {'print $1'}`
+HOSTR=`cat $host | grep -i host_name | tail -n 1 | awk '{print $2}'`
+#IPO=`cat $host | grep -i address | awk '{print $2}'`
+#IPR=`echo $ip`
+sed -i "s/$HOSTR/$HOST.nic.in/g" $host
+#sed -i "s/$IPO/$IPR/g" $host
+done < file_name_ip
+
