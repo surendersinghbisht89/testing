@@ -2,7 +2,7 @@
 IFS=':'
 while read f1 f2 f3 f4 f5
 do
-dddddoooooooooooooooooo
+iidddddoooooooooooooooooo
 echo " ma '$f1' legacyexpdate '$f2' legacyretiredate '$f3' zimbrastatus  '$f4' "
 done < dd
 
