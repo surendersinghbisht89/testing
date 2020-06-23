@@ -2,6 +2,10 @@
 IFS=':'
 while read f1 f2 f3 f4 f5
 do
+<<<<<<< HEAD
+=======
+dddddoooooooooooooooooo
+>>>>>>> parent of 6fcea72... new entry ii 4 line
 echo " ma '$f1' legacyexpdate '$f2' legacyretiredate '$f3' zimbrastatus  '$f4' "
 done < dd
 
