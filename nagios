@@ -39,4 +39,4 @@ HOSTR=`cat $host | grep -i host_name | tail -n 1 | awk '{print $2}'`
 sed -i "s/$HOSTR/$HOST.nic.in/g" $host
 #sed -i "s/$IPO/$IPR/g" $host
 done < file_name_ip
-dddddddddd
+
